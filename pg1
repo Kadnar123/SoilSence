@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agriculture Information System</title>
+  <link rel="stylesheet" href="pg1.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Agriculture Information System</h1>
+  </header>
+
+  <main>
+    <section id="data-entry">
+      <h2>Enter Agriculture Information</h2>
+      <form id="agriculture-form" class="form-container">
+        <div class="form-group">
+          <label for="soil-type">Soil Type:</label>
+          <div class="input-icon">
+            <input type="text" id="soil-type" name="soil-type" placeholder="e.g., Loamy" required>
+            <img src="soil-icon.png" alt="soil icon">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="watering-frequency">Watering Frequency (in days):</label>
+          <input type="number" id="watering-frequency" name="watering-frequency" placeholder="e.g., 7" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="harvest-time">Harvest Time (in months):</label>
+          <input type="number" id="harvest-time" name="harvest-time" placeholder="e.g., 6" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Get Recommendation</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h2>Recommendation Generated!</h2>
+      <p>Your agriculture recommendations have been generated successfully.</p>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to handle form submission and redirect to the next page
+    document.getElementById('agriculture-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      // Show modal (optional)
+      const modal = document.getElementById('modal');
+      modal.style.display = 'flex';
+      
+      // Redirect to the next page after showing the modal for a short time
+      setTimeout(function() {
+        window.location.href = 'next-page-url.html'; // Replace with your next page URL
+      }, 2000); // Wait for 2 seconds before redirecting
+    });
+
+    // Close modal when the close button is clicked
+    document.querySelector('.close-btn').addEventListener('click', function() {
+      document.getElementById('modal').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
